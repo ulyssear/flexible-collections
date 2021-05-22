@@ -4,9 +4,18 @@ declare(strict_types=1);
 namespace Ulyssear;
 
 
+/**
+ * Class Collection
+ * @package Ulyssear
+ */
 class Collection extends AbstractCollection
 {
 
+    /**
+     * Collection constructor.
+     * @constructor
+     * @param array $map Map of collection
+     */
     public function __construct(array $map = [])
     {
         parent::__construct($map);
