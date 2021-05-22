@@ -1,0 +1,20 @@
+{
+    "name": "ulyssear/collection",
+    "description": "Flexible collections for PHP",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ulysse ARNAUD",
+            "email": "ulysse.arnaud@liigem.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ulyssear\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9",
+        "maximebf/debugbar": "^1.16"
+    }
+}
