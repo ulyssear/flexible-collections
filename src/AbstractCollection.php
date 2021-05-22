@@ -19,13 +19,18 @@ abstract class AbstractCollection
     {
         if (in_array($method, array_keys($this->functions))) {
             try {
-                return $this->call($method, ...$parameters);
+                return $this->functions[$method](...$parameters);
             } catch (\Throwable $throwable) {
                 throw new \Exception($throwable);
             }
         }
 
-        return $this;
+        try {
+            return $this[$method](...$parameters);
+        }
+        catch(\Throwable $throwable) {
+            throw new \Exception('No function named "' . $method . '" defined for collections !');
+        }
     }
 
     public function setFunction(string $name, callable $function)
@@ -33,14 +38,4 @@ abstract class AbstractCollection
         $this->functions[$name] = $function;
         return $this;
     }
-
-    public function call($function, ...$arguments)
-    {
-        if (in_array($function, array_keys($this->functions))) {
-            return $this->functions[$function](...$arguments);
-        }
-
-        throw new \Exception('No function named "' . $function . '" defined for collections !');
-    }
-
 }
