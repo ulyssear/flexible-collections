@@ -1,6 +1,6 @@
 {
     "name": "ulyssear/collection",
-    "description": "Flexible collections for PHP",
+    "description": "Lightweight & flexible collections for PHP 8",
     "type": "library",
     "authors": [
         {
