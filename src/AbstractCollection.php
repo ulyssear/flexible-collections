@@ -27,8 +27,7 @@ abstract class AbstractCollection
 
         try {
             return $this[$method](...$parameters);
-        }
-        catch(\Throwable $throwable) {
+        } catch (\Throwable $throwable) {
             throw new \Exception('No function named "' . $method . '" defined for collections !');
         }
     }
