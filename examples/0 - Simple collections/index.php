@@ -11,8 +11,8 @@ function main()
     $collection = new Collection;
     dump($collection);
 
-    dump('PUSH');
-    $collection->push('First', 'Second', 'Third', 'Fourth');
+    dump('PUSH STACK') ;
+    $collection->pushStack('First', 'Second', 'Third', 'Fourth');
     dump($collection->values());
 
     dump('POP');
@@ -21,6 +21,14 @@ function main()
 
     dump('SHIFT');
     dump($collection->shift());
+    dump($collection->values());
+
+    dump('CLEAR');
+    $collection->clear();
+    dump($collection->values());
+
+    dump('PUSH HEAP') ;
+    $collection->pushHeap('First', 'Second', 'Third', 'Fourth');
     dump($collection->values());
 }
 
