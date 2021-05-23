@@ -22,7 +22,7 @@ class Collection extends AbstractCollection
 
         $this
             ->setFunction('get', function (...$parameters) {
-                $entry = $parameters[0];
+                list($entry) = $parameters;
 
                 if (isset($this->map[$entry])) {
                     return $this->map[$entry];
@@ -31,13 +31,25 @@ class Collection extends AbstractCollection
                 throw new \Exception("Unknown entry");
             })
             ->setFunction('pushStack', function (...$entries) {
-                $this->map = [...$entries, ...$this->map];
+                foreach ($entries as $entry) {
+                    $this->map = [
+                        $entry,
+                        ...$this->map
+                    ];
+                }
+                return $this;
             })
             ->setFunction('pushHeap', function (...$entries) {
-                $this->map = [...$this->map, ...$entries];
+                foreach ($entries as $entry) {
+                    $this->map = [
+                        ...$this->map,
+                        $entry
+                    ];
+                }
+                return $this;
             })
             ->setFunction('push', function (...$entries) {
-                $this->pushHeap(...$entries);
+                return $this->pushHeap(...$entries);
             })
             ->setFunction('pushIfNotExists', function (...$entries) {
                 foreach ($entries as $entry) {
