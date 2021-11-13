@@ -1,5 +1,5 @@
 {
-    "name": "ulyssear/collection",
+    "name": "ulyssear/flexible-collections",
     "description": "Lightweight & flexible collections for PHP 8",
     "type": "library",
     "authors": [
@@ -12,6 +12,9 @@
         "psr-4": {
             "Ulyssear\\": "src/"
         }
+    },
+    "require": {
+        "php": ">=8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "9",
