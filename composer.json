@@ -2,6 +2,7 @@
     "name": "ulyssear/flexible-collections",
     "description": "Lightweight & flexible collections for PHP 8",
     "type": "library",
+    "version": "1.0",
     "authors": [
         {
             "name": "Ulysse ARNAUD",
