@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ulyssear\\": "src/"
+            "Ulyssear\\": "src"
         }
     },
     "require": {
