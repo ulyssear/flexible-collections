@@ -15,49 +15,68 @@ class Collection extends AbstractCollection
      * Collection constructor.
      * @constructor
      * @param array $map Map of collection
+     *
+     * Available methods :
+     * $collection->get(entry)                      entry is the index of the value
+     * $collection->pushStack(...entries)           entries could be one or more entry
+     * $collection->pushHeap(...entries)            entries could be one or more entry
+     * $collection->push(...entries)                entries could be one or more entry
+     * $collection->pushIfNotExists(...entries)     entries could be one or more entry
+     * $collection->pop()
+     * $collection->shift()
+     * $collection->clear()
+     * $collection->keys()
+     * $collection->values()
+     * $collection->entries()
+     * $collection->has(value)
+     * $collection->hasIndex(value)
+     * $collection->flatten()
      */
     public function __construct(array $map = [])
     {
         parent::__construct($map);
 
         $this
-            ->setFunction('get', function (...$parameters) {
-                list($entry) = $parameters;
-
-                if (isset($this->map[$entry])) {
-                    return $this->map[$entry];
-                }
-
+            ->setFunction('get', function ($entry) {
+                if (isset($this->map[$entry])) return $this->map[$entry];
                 throw new \Exception("Unknown entry");
             })
+            ->setFunction('has', function ($value) {
+                return in_array($value, array_values($this->map));
+            })
+            ->setFunction('hasIndex', function ($value) {
+                return in_array($value, array_keys($this->map));
+            })
             ->setFunction('pushStack', function (...$entries) {
-                foreach ($entries as $entry) {
-                    $this->map = [
-                        $entry,
-                        ...$this->map
-                    ];
-                }
+                foreach ($entries as $entry) $this->map = [$entry, ...$this->map];
                 return $this;
             })
             ->setFunction('pushHeap', function (...$entries) {
-                foreach ($entries as $entry) {
-                    $this->map = [
-                        ...$this->map,
-                        $entry
-                    ];
-                }
+                foreach ($entries as $entry) $this->map = [...$this->map, $entry];
                 return $this;
             })
             ->setFunction('push', function (...$entries) {
-                return $this->pushHeap(...$entries);
+                $this->map = array_merge_recursive($this->map, $entries);
+                return $this;
+            })
+            ->setFunction('pushNamedItem', function ($key, $value) {
+                $this->map[$key] = $value;
+                return $this;
+            })
+            ->setFunction('pushNamedItemIfNotExists', function ($key, $value) {
+                if (!$this->hasIndex($key)) $this->pushNamedItem($key,$value);
+                return $this;
+            })
+            ->setFunction('pushNamedItemsIfNotExists', function (...$entries) {
+                foreach ($entries as $entry) $this->pushNamedItemIfNotExists(...$entry);
+                return $this;
+            })
+            ->setFunction('pushNamedItems', function (...$entries) {
+                foreach ($entries as $entry) $this->pushNamedItem(...$entry);
+                return $this;
             })
             ->setFunction('pushIfNotExists', function (...$entries) {
-                foreach ($entries as $entry) {
-                    if (false === in_array($entry, $this->map)) {
-                        $this->push($entry);
-                    }
-                }
-
+                foreach ($entries as $entry) if (false === in_array($entry, $this->map)) $this->push($entry);
                 return $this;
             })
             ->setFunction('pop', function () {
@@ -77,7 +96,7 @@ class Collection extends AbstractCollection
                 return array_values($this->map);
             })
             ->setFunction('entries', function () {
-                return array_values($this->map);
+                return $this->map;
             });
     }
 
