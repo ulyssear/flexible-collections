@@ -42,14 +42,14 @@ abstract class AbstractCollection
             try {
                 return $this->functions[$method](...$parameters);
             } catch (\Throwable $throwable) {
-                throw new \Exception($throwable);
+                throw new \Exception("Error with method \"$method\"", $throwable);
             }
         }
 
         try {
             return $this[$method](...$parameters);
         } catch (\Throwable $throwable) {
-            throw new \Exception('No function named "' . $method . '" defined for collections !');
+            throw new \Exception("No function named \"$method\" defined for collections !");
         }
     }
 
