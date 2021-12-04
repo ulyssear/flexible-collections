@@ -42,7 +42,7 @@ abstract class AbstractCollection
             try {
                 return $this->functions[$method](...$parameters);
             } catch (\Throwable $throwable) {
-                throw new \Exception("Error with method \"$method\"", $throwable);
+                throw new \Exception("Error with method \"$method\"");
             }
         }
 
