@@ -97,6 +97,9 @@ class Collection extends AbstractCollection
             })
             ->setFunction('entries', function () {
                 return $this->map;
+            })
+            ->setFunction('count', function () {
+                return count(array_values($this->map));
             });
     }
 
