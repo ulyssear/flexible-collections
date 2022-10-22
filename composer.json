@@ -10,6 +10,16 @@
             "email": "ulysse.arnaud@liigem.io"
         }
     ],
+    "scripts": {
+        "test": "phpunit tests",
+        "static-analysis": "phpstan analyse --level=7 src tests",
+        "code-style": "php-cs-fixer fix --config=.php_cs.dist.php --verbose --diff --dry-run",
+        "checks": [
+            "@test",
+            "@static-analysis",
+            "@code-style"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Ulyssear\\": "src"
@@ -19,6 +29,8 @@
         "php": ">=8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=9"
+        "phpunit/phpunit": ">=9",
+        "phpstan/phpstan": "^1.8",
+        "friendsofphp/php-cs-fixer": "^3.12"
     }
 }
