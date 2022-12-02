@@ -17,7 +17,7 @@
   </a>
 
   <p align="center">
-    Get the best of both worlds: the availability to create your own collections with their own methods and the flexibility of the native PHP arrays.
+    Collections for PHP 8.
     <br />
     <a href="https://github.com/ulyssear/flexible-collections"><strong>Explore the docs »</strong></a>
     <br />
