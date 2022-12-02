@@ -116,7 +116,7 @@ composer require ulyssear/flexible-collections
    composer install
    ```
 
-If you are a developer, you can also perform theses steps to contribute to the project :
+If you are a developer, you can also follow theses steps to contribute to the project :
 
 3. Run tests
    ```sh
