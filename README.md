@@ -17,7 +17,7 @@
   </a>
 
   <p align="center">
-    Collections for PHP 8.
+    Polymorphic collections for PHP 8+.
     <br />
     <a href="https://github.com/ulyssear/flexible-collections"><strong>Explore the docs »</strong></a>
     <br />
