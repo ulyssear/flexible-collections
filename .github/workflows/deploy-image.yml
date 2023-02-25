@@ -1,0 +1,34 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: get-composer-version
+        id: package-version
+        run: echo ::set-output name=version::$(jq -r .version composer.json)
+
+      - uses: php-actions/composer@v6
+        with:
+          command: install
+          php_version: 8.1
+
+      - name: test
+        uses: php-actions/phpunit@v10
+        with:
+          php_version: 8.1
+          args: --no-interaction --no-progress --no-suggest --no-update --no-scripts --no-dev --prefer-dist
+
+  # publish:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   # todo : publish on github package and packagists        
+
+      
+      
