@@ -21,7 +21,6 @@ jobs:
       - uses: php-actions/phpunit@v3
         with:
           php_version: 8.1
-          args: tests
 
   # publish:
   #   needs: build
