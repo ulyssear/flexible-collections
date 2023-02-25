@@ -22,7 +22,6 @@ jobs:
         uses: php-actions/phpunit@v3
         with:
           php_version: 8.1
-          args: --no-interaction --no-progress --no-suggest --no-update --no-scripts --no-dev --prefer-dist
 
   # publish:
   #   needs: build
