@@ -17,7 +17,7 @@
   </a>
 
   <p align="center">
-    Get the best of both worlds: the availability to create your own collections with their own methods and the flexibility of the native PHP arrays.
+    Polymorphic collections for PHP 8+.
     <br />
     <a href="https://github.com/ulyssear/flexible-collections"><strong>Explore the docs »</strong></a>
     <br />
@@ -116,7 +116,7 @@ composer require ulyssear/flexible-collections
    composer install
    ```
 
-If you are a developer, you can also perform theses steps to contribute to the project :
+If you are a developer, you can also follow theses steps to contribute to the project :
 
 3. Run tests
    ```sh
