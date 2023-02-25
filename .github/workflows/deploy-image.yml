@@ -18,10 +18,10 @@ jobs:
           command: install
           php_version: 8.1
 
-      - name: test
-        uses: php-actions/phpunit@v3
+      - uses: php-actions/phpunit@v3
         with:
           php_version: 8.1
+          args: tests
 
   # publish:
   #   needs: build
